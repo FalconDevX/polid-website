@@ -1,0 +1,38 @@
+.hero {
+  position: relative;
+  padding: 7rem 1.75rem 5.5rem;
+  text-align: center;
+  background: var(--color-bg-alt) center / cover no-repeat;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 13, 0.55), rgba(10, 10, 13, 0.72));
+}
+
+.overlayLight {
+  background: linear-gradient(180deg, rgba(10, 20, 13, 0.22), rgba(10, 20, 13, 0.38));
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c9efce;
+  margin-bottom: 0.7rem;
+}
+
+.title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: #fdfaf3;
+}

@@ -1,0 +1,122 @@
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 1.75rem 6rem;
+}
+
+.intro {
+  max-width: 640px;
+  margin: 0 auto 4.5rem;
+  text-align: center;
+}
+
+.body {
+  color: var(--color-ink-soft);
+  margin-bottom: 1.1rem;
+  font-size: 1.02rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem;
+  margin-bottom: 4rem;
+}
+
+.processItem {
+  position: relative;
+  min-width: 0;
+}
+
+.step {
+  height: 100%;
+  padding: 2rem 1.5rem;
+  border-radius: 14px;
+  background: var(--color-bg-alt);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), var(--transition-theme);
+  opacity: 0;
+  animation: stepIn 0.58s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  z-index: 2;
+  color: var(--color-gold-dark);
+  font-size: 1.65rem;
+  line-height: 1;
+  transform: translate(8px, -50%);
+  opacity: 0;
+  animation: arrowIn 0.4s ease forwards;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes arrowIn {
+  from { opacity: 0; transform: translate(8px, -50%); }
+  to { opacity: 1; transform: translate(0, -50%); }
+}
+
+.step:hover {
+  transform: translateY(-6px);
+}
+
+.stepNumber {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  color: var(--color-gold);
+  margin-bottom: 0.6rem;
+}
+
+.stepTitle {
+  font-size: 1.15rem;
+  margin-bottom: 0.55rem;
+}
+
+.stepText {
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  line-height: 1.65;
+}
+
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .steps {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 3rem;
+  }
+
+  .arrow {
+    top: auto;
+    right: 50%;
+    bottom: -2.25rem;
+    transform: translate(50%, -8px) rotate(90deg);
+  }
+
+  @keyframes arrowIn {
+    from { opacity: 0; transform: translate(50%, -8px) rotate(90deg); }
+    to { opacity: 1; transform: translate(50%, 0) rotate(90deg); }
+  }
+}
+
+@media (max-width: 520px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step, .arrow { animation: none; opacity: 1; }
+}
