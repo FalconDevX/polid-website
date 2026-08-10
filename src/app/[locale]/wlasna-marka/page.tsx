@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageHero from '@/components/PageHero/PageHero';
 import Reveal from '@/components/Reveal/Reveal';
 import Button from '@/components/Button/Button';
-import heroImage from '../../../assets/images/own-brand-page.png';
+import heroImage from '../../../assets/images/own-brand-blueprint.png';
 import styles from './page.module.css';
 
 interface OwnBrandStep {
