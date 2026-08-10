@@ -255,6 +255,31 @@
   letter-spacing: 0.08em;
 }
 
+.imageWrap .colorStrip {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 96px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    125deg,
+    #ef2f65 0 12px,
+    #7827c8 12px 24px,
+    #16a8bd 24px 36px,
+    #31a84a 36px 48px,
+    #b8d629 48px 60px,
+    #f29b24 60px 72px
+  );
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  transition: transform 0.35s ease;
+}
+
+.card:hover .colorStrip {
+  transform: translateX(-3px) scaleX(1.04);
+}
+
 .cardBody {
   padding: 1.35rem;
 }

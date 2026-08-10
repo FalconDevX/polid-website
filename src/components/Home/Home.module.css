@@ -11,7 +11,16 @@
   justify-content: center;
   text-align: center;
   padding: 6rem 1.5rem 4rem;
-  background: linear-gradient(145deg, #153a2c 0%, #0c241b 55%, #071711 100%);
+  background:
+    radial-gradient(18% 44% at 4% 22%, rgba(139, 195, 74, 0.4) 0%, rgba(139, 195, 74, 0) 70%),
+    radial-gradient(60% 22% at 82% 4%, rgba(63, 167, 150, 0.3) 0%, rgba(63, 167, 150, 0) 68%),
+    radial-gradient(26% 60% at 96% 68%, rgba(67, 160, 71, 0.28) 0%, rgba(67, 160, 71, 0) 70%),
+    radial-gradient(48% 20% at 14% 94%, rgba(47, 125, 72, 0.4) 0%, rgba(47, 125, 72, 0) 72%),
+    radial-gradient(10% 14% at 62% 18%, rgba(224, 168, 21, 0.22) 0%, rgba(224, 168, 21, 0) 78%),
+    radial-gradient(34% 12% at 40% 62%, rgba(58, 145, 96, 0.24) 0%, rgba(58, 145, 96, 0) 74%),
+    radial-gradient(14% 30% at 70% 46%, rgba(139, 195, 74, 0.18) 0%, rgba(139, 195, 74, 0) 76%),
+    radial-gradient(85% 90% at 46% 52%, rgba(21, 58, 44, 0.45) 0%, rgba(21, 58, 44, 0) 82%),
+    linear-gradient(145deg, #153a2c 0%, #0c241b 55%, #071711 100%);
   background-size: cover;
   background-position: center 30%;
   overflow: hidden;
@@ -44,13 +53,41 @@
   border-radius: 50%;
 }
 
+.mopOrbitSpinner {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+  animation: mopSystemOrbit 82s 0.4s linear infinite;
+}
+
+@keyframes mopSystemOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .heroOrbit::before {
   inset: 11%;
+  border-style: dashed;
+  border-color: rgba(201, 239, 206, 0.17);
+  border-top-color: rgba(139, 195, 74, 0.55);
+  border-bottom-color: rgba(201, 239, 206, 0.04);
+  animation: ringSpin 26s linear infinite;
 }
 
 .heroOrbit::after {
   inset: 24%;
   border-style: dashed;
+  border-left-color: rgba(139, 195, 74, 0.48);
+  border-right-color: rgba(201, 239, 206, 0.04);
+  animation: ringSpinReverse 18s linear infinite;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ringSpinReverse {
+  to { transform: rotate(-360deg); }
 }
 
 .mop {
@@ -80,10 +117,12 @@
 }
 
 .mopOne img {
+  translate: var(--mop-1-x, 0) var(--mop-1-y, 0);
   animation: mopFloatOne 6s 3.5s ease-in-out infinite;
 }
 
 .mopTwo img {
+  translate: var(--mop-2-x, 0) var(--mop-2-y, 0);
   animation: mopFloatTwo 6.5s 1.7s ease-in-out infinite;
 }
 
@@ -98,10 +137,12 @@
 }
 
 .mopThree img {
+  translate: var(--mop-3-x, 0) var(--mop-3-y, 0);
   animation: mopFloatThree 7s 2.6s ease-in-out infinite;
 }
 
 .mopFour img {
+  translate: var(--mop-4-x, 0) var(--mop-4-y, 0);
   animation: mopFloatFour 6.8s 4.4s ease-in-out infinite;
 }
 
@@ -111,7 +152,18 @@
 }
 
 .mopFive img {
+  translate: var(--mop-5-x, 0) var(--mop-5-y, 0);
   animation: mopFloatFive 7.2s 3.3s ease-in-out infinite;
+}
+
+.mopSix {
+  --orbit-radius: min(35vw, 360px);
+  animation: mopOutSix 1.6s 0.8s cubic-bezier(0.45, 0, 0.2, 1) both;
+}
+
+.mopSix img {
+  translate: var(--mop-6-x, 0) var(--mop-6-y, 0);
+  animation: mopFloatSix 6.4s 2.6s ease-in-out infinite;
 }
 
 @keyframes orbitReveal {
@@ -149,29 +201,40 @@
   100% { opacity: 1; transform: translate(-50%, -50%) rotate(-90deg) translateY(var(--orbit-radius)) scale(1); }
 }
 
+@keyframes mopOutSix {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(0deg) translateY(var(--orbit-radius)) scale(0.72); }
+  9% { opacity: 1; }
+  100% { opacity: 1; transform: translate(-50%, -50%) rotate(90deg) translateY(var(--orbit-radius)) scale(1); }
+}
+
 @keyframes mopFloatOne {
-  0%, 100% { transform: translate(var(--mop-1-x, 0), var(--mop-1-y, 0)) rotate(0); }
-  50% { transform: translate(calc(var(--mop-1-x, 0px) - 8px), calc(var(--mop-1-y, 0px) - 10px)) rotate(6deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(-8px, -10px) rotate(6deg); }
 }
 
 @keyframes mopFloatTwo {
-  0%, 100% { transform: translate(var(--mop-2-x, 0), var(--mop-2-y, 0)) rotate(0); }
-  50% { transform: translate(calc(var(--mop-2-x, 0px) + 9px), calc(var(--mop-2-y, 0px) + 8px)) rotate(-6deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(9px, 8px) rotate(-6deg); }
 }
 
 @keyframes mopFloatThree {
-  0%, 100% { transform: translate(var(--mop-3-x, 0), var(--mop-3-y, 0)) rotate(0); }
-  50% { transform: translate(calc(var(--mop-3-x, 0px) + 8px), calc(var(--mop-3-y, 0px) - 9px)) rotate(5deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(8px, -9px) rotate(5deg); }
 }
 
 @keyframes mopFloatFour {
-  0%, 100% { transform: translate(var(--mop-4-x, 0), var(--mop-4-y, 0)) rotate(0); }
-  50% { transform: translate(calc(var(--mop-4-x, 0px) - 9px), calc(var(--mop-4-y, 0px) + 9px)) rotate(-5deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(-9px, 9px) rotate(-5deg); }
 }
 
 @keyframes mopFloatFive {
-  0%, 100% { transform: translate(var(--mop-5-x, 0), var(--mop-5-y, 0)) rotate(0); }
-  50% { transform: translate(calc(var(--mop-5-x, 0px) + 7px), calc(var(--mop-5-y, 0px) - 10px)) rotate(4deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(7px, -10px) rotate(4deg); }
+}
+
+@keyframes mopFloatSix {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(-10px, 7px) rotate(-5deg); }
 }
 
 .heroContent {
@@ -219,21 +282,21 @@
   position: absolute;
   top: -45%;
   left: -65%;
-  width: 32%;
-  height: 190%;
+  width: 24%;
+  height: 210%;
   z-index: 2;
   background: rgba(255, 255, 255, 0.55);
-  filter: blur(7px);
+  filter: blur(5px);
   transform: rotate(18deg);
-  animation: buttonGlint 3.5s 1s ease-in-out infinite;
+  animation: buttonGlint 5s 1.5s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes buttonGlint {
-  0%, 72% { left: -65%; opacity: 0; }
-  76% { opacity: 1; }
-  90% { left: 135%; opacity: 1; }
-  91%, 100% { left: 135%; opacity: 0; }
+  0%, 76% { left: -65%; opacity: 0; }
+  78% { opacity: 0.85; }
+  91% { left: 135%; opacity: 0.85; }
+  93%, 100% { left: 135%; opacity: 0; }
 }
 
 @keyframes fadeUp {
@@ -350,7 +413,8 @@
 .ownBrandVisual {
   border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 4 / 3.2;
+  aspect-ratio: 16 / 10;
+  background: #e8f2fc;
 }
 
 .ownBrandImg {
@@ -404,6 +468,10 @@
     --orbit-radius: 46vw;
   }
 
+  .mopSix {
+    --orbit-radius: 49vw;
+  }
+
   .productGrid {
     grid-template-columns: 1fr;
   }
@@ -411,11 +479,15 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroOrbit,
+  .heroOrbit::before,
+  .heroOrbit::after,
+  .mopOrbitSpinner,
   .mopOne,
   .mopTwo,
   .mopThree,
   .mopFour,
   .mopFive,
+  .mopSix,
   .mop img {
     animation: none;
   }

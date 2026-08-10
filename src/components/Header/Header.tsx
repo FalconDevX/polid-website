@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
@@ -17,6 +17,8 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -32,15 +34,28 @@ export default function Header() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    mobileMenuRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
   const links = [
     { href: '/', label: t('home'), end: true },
     { href: '/produkty', label: t('products'), end: false },
-    { href: '/o-nas', label: t('about'), end: false },
     { href: '/wlasna-marka', label: t('ownBrand'), end: false },
     { href: '/kontakt', label: t('contact'), end: false },
   ];
 
-  const isActive = (href: string, end: boolean) => (end ? pathname === href : pathname === href || pathname.startsWith(`${href}/`));
+  const isActive = (href: string, end: boolean) =>
+    href.includes('#') ? false : end ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header
@@ -67,6 +82,7 @@ export default function Header() {
           <LangSwitch />
           <ThemeToggle />
           <button
+            ref={menuButtonRef}
             type="button"
             className="hidden h-[26px] w-[26px] cursor-pointer flex-col justify-center gap-[5px] border-none bg-none p-0 max-[860px]:flex"
             onClick={() => setMenuOpen((o) => !o)}
@@ -89,6 +105,7 @@ export default function Header() {
       </div>
 
       <div
+        ref={mobileMenuRef}
         className={`hidden max-[860px]:block max-[860px]:overflow-hidden max-[860px]:bg-bg max-[860px]:text-ink max-[860px]:transition-[max-height,border-color] max-[860px]:duration-[450ms] max-[860px]:ease-[cubic-bezier(0.16,1,0.3,1)] ${
           menuOpen ? 'max-[860px]:max-h-[400px] max-[860px]:border-b max-[860px]:border-border' : 'max-[860px]:max-h-0 max-[860px]:border-b max-[860px]:border-transparent'
         }`}

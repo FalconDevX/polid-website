@@ -8,8 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return { title: t('title'), description: t('subtitle') };
 }
 
-export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ProductsPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ category?: string }> }) {
   const { locale } = await params;
+  const { category } = await searchParams;
   setRequestLocale(locale);
-  return <ProductsExplorer />;
+  return <ProductsExplorer key={category ?? 'all'} initialCategory={category} />;
 }

@@ -1,75 +1,26 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageHero from '@/components/PageHero/PageHero';
 import Reveal from '@/components/Reveal/Reveal';
+import type { SupportedLocale } from '@/data/products';
 import heroImage from '../../../assets/images/panel-made-in-poland.jpg';
-import ContactForm from './ContactForm';
+import ContactForm, { type ContactFormCopy } from './ContactForm';
 import styles from './page.module.css';
 
+type PageCopy = ContactFormCopy & { eyebrow: string; heading: string; intro: string; address: string; tax: string; phoneLabel: string; formHeading: string; formIntro: string; mapTitle: string };
+const copy: Record<SupportedLocale, PageCopy> = {
+  pl: { eyebrow: 'Napisz lub zadzwoń', heading: 'Porozmawiajmy o współpracy', intro: 'Masz pytanie o ofertę, produkcję pod własną marką lub warunki zamówienia? Skontaktuj się z nami.', address: 'Adres', tax: 'NIP', phoneLabel: 'Telefon / fax', formHeading: 'Wyślij wiadomość', formIntro: 'Wypełnij formularz, a przygotujemy wiadomość w Twoim programie pocztowym.', mapTitle: 'Mapa dojazdu do Polid s.c.', name: 'Imię i nazwisko', email: 'Adres e-mail', phone: 'Telefon', subject: 'Temat', message: 'Wiadomość', consent: 'Wyrażam zgodę na kontakt w sprawie przesłanego zapytania.', submit: 'Wyślij wiadomość', namePlaceholder: 'Jan Kowalski', subjectPlaceholder: 'Zapytanie o ofertę', messagePlaceholder: 'Napisz, w czym możemy pomóc…', notProvided: 'nie podano' },
+  en: { eyebrow: 'Write or call', heading: 'Let’s talk about working together', intro: 'Have a question about our range, private-label production or order terms? Contact us.', address: 'Address', tax: 'Tax ID', phoneLabel: 'Phone / fax', formHeading: 'Send a message', formIntro: 'Complete the form and we will prepare a message in your email application.', mapTitle: 'Directions to Polid s.c.', name: 'Full name', email: 'Email address', phone: 'Phone', subject: 'Subject', message: 'Message', consent: 'I agree to be contacted about this enquiry.', submit: 'Send message', namePlaceholder: 'John Smith', subjectPlaceholder: 'Product enquiry', messagePlaceholder: 'Tell us how we can help…', notProvided: 'not provided' },
+  ru: { eyebrow: 'Напишите или позвоните', heading: 'Обсудим сотрудничество', intro: 'Есть вопрос об ассортименте, производстве под вашей маркой или условиях заказа? Свяжитесь с нами.', address: 'Адрес', tax: 'ИНН', phoneLabel: 'Телефон / факс', formHeading: 'Отправить сообщение', formIntro: 'Заполните форму, и сообщение откроется в вашей почтовой программе.', mapTitle: 'Карта проезда к Polid s.c.', name: 'Имя и фамилия', email: 'Электронная почта', phone: 'Телефон', subject: 'Тема', message: 'Сообщение', consent: 'Я согласен на связь по поводу отправленного запроса.', submit: 'Отправить сообщение', namePlaceholder: 'Иван Иванов', subjectPlaceholder: 'Запрос о предложении', messagePlaceholder: 'Напишите, чем мы можем помочь…', notProvided: 'не указан' },
+  uk: { eyebrow: 'Напишіть або зателефонуйте', heading: 'Обговорімо співпрацю', intro: 'Маєте запитання про асортимент, виробництво під власною маркою або умови замовлення? Зв’яжіться з нами.', address: 'Адреса', tax: 'Податковий номер', phoneLabel: 'Телефон / факс', formHeading: 'Надіслати повідомлення', formIntro: 'Заповніть форму, і повідомлення відкриється у вашій поштовій програмі.', mapTitle: 'Карта проїзду до Polid s.c.', name: 'Ім’я та прізвище', email: 'Електронна пошта', phone: 'Телефон', subject: 'Тема', message: 'Повідомлення', consent: 'Я погоджуюся на зв’язок щодо надісланого запиту.', submit: 'Надіслати повідомлення', namePlaceholder: 'Іван Іваненко', subjectPlaceholder: 'Запит щодо пропозиції', messagePlaceholder: 'Напишіть, чим ми можемо допомогти…', notProvided: 'не вказано' },
+};
+
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations('contactPage');
-
-  return (
-    <div>
-      <PageHero eyebrow={t('heading')} title={t('title')} image={heroImage} />
-
-      <section className={styles.section}>
-        <div className={styles.intro}>
-          <span>Napisz lub zadzwoń</span>
-          <h2>Porozmawiajmy o współpracy</h2>
-          <p>Masz pytanie o ofertę, produkcję pod własną marką lub warunki zamówienia? Skontaktuj się z nami.</p>
-        </div>
-
-        <div className={styles.contactGrid}>
-          <Reveal className={styles.details}>
-            <div className={styles.card}>
-              <h3>{t('companyLabel')}</h3>
-              <p>
-                <strong>Adres</strong>
-                <br />
-                Jarosławiec 194
-                <br />
-                22-424 Sitno
-              </p>
-              <p>
-                <strong>NIP</strong>
-                <br />
-                922-000-13-02
-              </p>
-            </div>
-            <div className={styles.card}>
-              <h3>{t('contactLabel')}</h3>
-              <p>
-                <strong>Telefon / fax</strong>
-                <br />
-                <a href="tel:+48846112012">(+48) 84 611 20 12</a>
-              </p>
-              <p>
-                <strong>E-mail</strong>
-                <br />
-                <a href="mailto:biuro@polid.pl">biuro@polid.pl</a>
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={100} className={styles.formWrap}>
-            <h3>Wyślij wiadomość</h3>
-            <p>Wypełnij formularz, a przygotujemy wiadomość w Twoim programie pocztowym.</p>
-            <ContactForm />
-          </Reveal>
-        </div>
-
-        <Reveal delay={180} className={styles.mapWrap}>
-          <iframe
-            title="Mapa dojazdu do Polid s.c."
-            src="https://www.google.com/maps?q=Jaros%C5%82awiec%20194%2C%2022-424%20Sitno&output=embed"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-        </Reveal>
-      </section>
-    </div>
-  );
+  const { locale } = await params; setRequestLocale(locale); const t = await getTranslations('contactPage');
+  const text = copy[(locale in copy ? locale : 'pl') as SupportedLocale];
+  return <div><PageHero eyebrow={t('heading')} title={t('title')} image={heroImage} /><section className={styles.section}>
+    <div className={styles.intro}><span>{text.eyebrow}</span><h2>{text.heading}</h2><p>{text.intro}</p></div>
+    <div className={styles.contactGrid}><Reveal className={styles.details}><div className={styles.card}><h3>{t('companyLabel')}</h3><p><strong>{text.address}</strong><br />Jarosławiec 194<br />22-424 Sitno</p><p><strong>{text.tax}</strong><br />922-000-13-02</p></div><div className={styles.card}><h3>{t('contactLabel')}</h3><p><strong>{text.phoneLabel}</strong><br /><a href="tel:+48846112012">(+48) 84 611 20 12</a></p><p><strong>E-mail</strong><br /><a href="mailto:biuro@polid.pl">biuro@polid.pl</a></p></div></Reveal>
+      <Reveal delay={100} className={styles.formWrap}><h3>{text.formHeading}</h3><p>{text.formIntro}</p><ContactForm copy={text} /></Reveal></div>
+    <Reveal delay={180} className={styles.mapWrap}><iframe title={text.mapTitle} src="https://www.google.com/maps?q=Jaros%C5%82awiec%20194%2C%2022-424%20Sitno&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></Reveal>
+  </section></div>;
 }

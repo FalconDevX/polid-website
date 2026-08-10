@@ -1,0 +1,25 @@
+.trackPulse {
+  animation: trackPulse 0.48s ease-out;
+}
+
+.thumbClick {
+  animation: thumbClick 0.48s ease-out;
+}
+
+@keyframes trackPulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  45% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-gold) 18%, transparent); }
+}
+
+@keyframes thumbClick {
+  0%, 100% { scale: 1; }
+  40% { scale: 0.82 1.12; }
+  70% { scale: 1.08 0.94; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trackPulse,
+  .thumbClick {
+    animation: none;
+  }
+}

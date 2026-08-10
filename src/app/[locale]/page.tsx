@@ -4,36 +4,52 @@ import Reveal from '@/components/Reveal/Reveal';
 import Button from '@/components/Button/Button';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import HomeHero from '@/components/Home/HomeHero';
+import StatCounter from '@/components/Home/StatCounter';
+import ScrollToHash from '@/components/Home/ScrollToHash';
 import { products, homeProducts } from '@/data/products';
-import panelImage from '../../assets/images/panel-made-in-poland.jpg';
-import ownBrandImage from '../../assets/images/own-brand-home.jpg';
+import ownBrandImage from '../../assets/images/own-brand-blueprint.png';
+import aboutBg from '../../assets/images/hero-bg.png';
 import styles from '@/components/Home/Home.module.css';
+import aboutStyles from '@/components/Home/HomeAbout.module.css';
+
+interface AboutStat {
+  value: string;
+  label: string;
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
   const featured = products.filter((p) => homeProducts.includes(p.key));
+  const aboutStats = t.raw('aboutPage.stats') as AboutStat[];
 
   return (
     <div className={styles.page}>
+      <ScrollToHash />
       <HomeHero />
 
-      <section className={styles.intro}>
-        <div className={styles.introGrid}>
-          <Reveal className={styles.introText}>
-            <span className={styles.eyebrow}>{t('intro.eyebrow')}</span>
-            <h2 className={styles.introTitle}>{t('intro.title')}</h2>
-            <p className={styles.body}>{t('intro.p1')}</p>
-            <p className={styles.body}>{t('intro.p2')}</p>
-            <p className={styles.body}>{t('intro.p3')}</p>
-            <p className={styles.body}>{t('intro.p4')}</p>
-            <Button to="/o-nas">{t('intro.cta')}</Button>
+      <section id="about" className={aboutStyles.section} style={{ backgroundImage: `url(${aboutBg.src})` }}>
+        <Reveal className={aboutStyles.heading}>
+          <span>{t('aboutPage.heading')}</span>
+          <h2>{t('aboutPage.title')}</h2>
+        </Reveal>
+
+        <div className={aboutStyles.grid}>
+          <Reveal className={aboutStyles.text}>
+            <p className={aboutStyles.body}>{t('aboutPage.p1')}</p>
+            <p className={aboutStyles.body}>{t('aboutPage.p2')}</p>
+            <p className={aboutStyles.body}>{t('aboutPage.p3')}</p>
           </Reveal>
-          <Reveal delay={120} className={styles.introPanel} style={{ backgroundImage: `url(${panelImage.src})` }}>
-            <div className={styles.panelOverlay} />
-            <span className={styles.panelMade}>{t('intro.madeIn')}</span>
-          </Reveal>
+        </div>
+
+        <div className={aboutStyles.stats}>
+          {aboutStats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 80} className={aboutStyles.stat}>
+              <StatCounter value={s.value} className={aboutStyles.statValue} />
+              <span className={aboutStyles.statLabel}>{s.label}</span>
+            </Reveal>
+          ))}
         </div>
       </section>
 

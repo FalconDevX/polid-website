@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import type { ProductCategory } from '@/data/products';
 
 interface ProductCardProps {
@@ -13,7 +14,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
   const label = tCategories(product.key);
 
   return (
-    <div className="group overflow-hidden rounded-[14px] border border-border bg-surface text-center transition-[transform,box-shadow,border-color,background-color] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-transparent hover:shadow-soft">
+    <Link href={`/produkty?category=${product.id}#catalog-title`} className="group block overflow-hidden rounded-[14px] border border-border bg-surface text-center transition-[transform,box-shadow,border-color,background-color] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-transparent hover:shadow-soft" aria-label={label}>
       <div className={`relative overflow-hidden bg-bg-alt ${compact ? 'h-[140px]' : 'h-[190px]'}`}>
         <Image
           src={product.image}
@@ -26,6 +27,6 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
         {label}
       </h3>
       {!compact && <p className="mx-[1.4rem] mb-6 text-[0.88rem] text-ink-soft">{tDescriptions(product.key)}</p>}
-    </div>
+    </Link>
   );
 }

@@ -138,6 +138,166 @@
   transform: none;
 }
 
+.galleryButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.galleryGrid .galleryButton img,
+.galleryGrid.twoImageGallery .galleryButton img,
+.galleryGrid.fourImageGallery .galleryButton img {
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.galleryGrid > div:hover .galleryButton img,
+.galleryGrid.twoImageGallery > div:hover .galleryButton img,
+.galleryGrid.fourImageGallery > div:hover .galleryButton img {
+  transform: scale(1.045);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(3, 8, 5, 0.92);
+  backdrop-filter: blur(10px);
+  animation: lightboxIn 0.25s ease both;
+}
+
+.lightboxImage {
+  position: relative;
+  width: min(86vw, 1180px);
+  height: min(82vh, 820px);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.lightboxImage img {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.lightboxImageZoomed {
+  cursor: zoom-out;
+}
+
+.lightboxClose,
+.lightboxArrow {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(10, 20, 14, 0.58);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.lightboxClose:hover,
+.lightboxArrow:hover {
+  border-color: var(--color-gold);
+  background: var(--color-gold-dark);
+  transform: scale(1.07);
+}
+
+.lightboxClose {
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 46px;
+  height: 46px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.lightboxArrow {
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translateY(-50%);
+}
+
+.lightboxArrow svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightboxArrow:hover {
+  transform: translateY(-50%) scale(1.07);
+}
+
+.lightboxPrevious { left: 1.5rem; }
+.lightboxNext { right: 1.5rem; }
+
+.lightboxCounter {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  transform: translateX(-50%);
+}
+
+.zoomControls {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(10, 20, 14, 0.65);
+  transform: translateX(-50%);
+}
+
+.zoomControls button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.zoomControls button:hover:not(:disabled) { background: var(--color-gold-dark); }
+.zoomControls button:disabled { opacity: 0.35; cursor: default; }
+.zoomControls span { min-width: 48px; text-align: center; font-size: 0.72rem; }
+
+@keyframes lightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .twoImageGallery > div {
   position: relative;
   background: linear-gradient(145deg, #f8faf8, #e9efea);
