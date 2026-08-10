@@ -7,7 +7,7 @@ import HomeHero from '@/components/Home/HomeHero';
 import StatCounter from '@/components/Home/StatCounter';
 import ScrollToHash from '@/components/Home/ScrollToHash';
 import { products, homeProducts } from '@/data/products';
-import ownBrandImage from '../../assets/images/own-brand-blueprint.png';
+import ownBrandImage from '../../assets/images/own-brand-mop-blueprint.png';
 import aboutBg from '../../assets/images/hero-bg.png';
 import styles from '@/components/Home/Home.module.css';
 import aboutStyles from '@/components/Home/HomeAbout.module.css';

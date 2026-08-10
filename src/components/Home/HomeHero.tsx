@@ -18,7 +18,9 @@ export default function HomeHero() {
 
   useEffect(() => {
     const hero = heroRef.current;
-    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const phoneViewport = window.matchMedia('(max-width: 767px)').matches;
+    if (!hero || reducedMotion || phoneViewport) return undefined;
 
     const parallax = [
       { x: -12, y: -8, ease: 0.045 },

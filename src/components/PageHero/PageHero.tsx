@@ -6,13 +6,14 @@ interface PageHeroProps {
   title: string;
   image?: StaticImageData;
   lightOverlay?: boolean;
+  imagePosition?: string;
 }
 
-export default function PageHero({ eyebrow, title, image, lightOverlay = false }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, image, lightOverlay = false, imagePosition = 'center' }: PageHeroProps) {
   return (
     <section
       className="relative overflow-hidden bg-cover bg-center bg-bg-alt px-7 pb-[5.5rem] pt-28 text-center transition-colors duration-[400ms]"
-      style={image ? { backgroundImage: `url(${image.src})` } : undefined}
+      style={image ? { backgroundImage: `url(${image.src})`, backgroundPosition: imagePosition } : undefined}
     >
       <div
         className={

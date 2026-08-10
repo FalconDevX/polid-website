@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageHero from '@/components/PageHero/PageHero';
 import Reveal from '@/components/Reveal/Reveal';
 import type { SupportedLocale } from '@/data/products';
-import heroImage from '../../../assets/images/panel-made-in-poland.jpg';
+import heroImage from '../../../assets/images/contact-hero.png';
 import ContactForm, { type ContactFormCopy } from './ContactForm';
 import styles from './page.module.css';
 
@@ -17,7 +17,7 @@ const copy: Record<SupportedLocale, PageCopy> = {
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params; setRequestLocale(locale); const t = await getTranslations('contactPage');
   const text = copy[(locale in copy ? locale : 'pl') as SupportedLocale];
-  return <div><PageHero eyebrow={t('heading')} title={t('title')} image={heroImage} /><section className={styles.section}>
+  return <div><PageHero eyebrow={t('heading')} title={t('title')} image={heroImage} imagePosition="center calc(50% + 58px)" /><section className={styles.section}>
     <div className={styles.intro}><span>{text.eyebrow}</span><h2>{text.heading}</h2><p>{text.intro}</p></div>
     <div className={styles.contactGrid}><Reveal className={styles.details}><div className={styles.card}><h3>{t('companyLabel')}</h3><p><strong>{text.address}</strong><br />Jarosławiec 194<br />22-424 Sitno</p><p><strong>{text.tax}</strong><br />922-000-13-02</p></div><div className={styles.card}><h3>{t('contactLabel')}</h3><p><strong>{text.phoneLabel}</strong><br /><a href="tel:+48846112012">(+48) 84 611 20 12</a></p><p><strong>E-mail</strong><br /><a href="mailto:biuro@polid.pl">biuro@polid.pl</a></p></div></Reveal>
       <Reveal delay={100} className={styles.formWrap}><h3>{text.formHeading}</h3><p>{text.formIntro}</p><ContactForm copy={text} /></Reveal></div>
