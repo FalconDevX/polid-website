@@ -1,0 +1,95 @@
+{
+  "nav": { "home": "Home", "products": "Products", "about": "About us", "ownBrand": "Private label", "contact": "Contact" },
+  "hero": {
+    "title": "Clean starts with quality",
+    "subtitle": "Making mops with passion since 1991",
+    "cta": "See products"
+  },
+  "intro": {
+    "eyebrow": "Mop manufacturer",
+    "title": "POLID",
+    "p1": "In 1991, \"PoLiD\" was the first company in Poland to start producing string mops.",
+    "p2": "We are a reliable, proven manufacturer — our products sit on the shelves of many wholesalers and supermarkets in Poland and around the world.",
+    "p3": "Our products combine good quality, functionality and an attractive price, rounded off with a rich colour palette and modern packaging.",
+    "p4": "We manufacture microfiber, viscose, cotton, cotton-viscose and cotton WRAP mops.",
+    "cta": "About us",
+    "madeIn": "Made in Poland"
+  },
+  "productsSection": {
+    "title": "Mops we manufacture",
+    "cta": "All products"
+  },
+  "ownBrandSection": {
+    "title": "We manufacture for your own brand",
+    "text": "Have an idea for your own product but no way to start a production line? Talk it through with us and let us manufacture it for you — then launch it under your own company's brand or an entirely new one.",
+    "cta": "Learn more"
+  },
+  "productsPage": {
+    "title": "Our products",
+    "subtitle": "The full range of mop heads",
+    "categories": {
+      "microfiber": "Microfiber mops",
+      "viscoseMix": "Viscose mops – mixed colour",
+      "viscoseWhite": "Viscose mops – white",
+      "cottonViscose": "Cotton-viscose mops",
+      "cottonViscose2": "Cotton-viscose mops – 2 colours",
+      "cotton": "Cotton mops",
+      "cottonWrap": "Cotton WRAP mops"
+    },
+    "descriptions": {
+      "microfiber": "Microfiber mops for thorough, efficient cleaning of stubborn dirt and polishing all kinds of smooth floors. Absorb over 500 ml of water or liquid.",
+      "viscoseMix": "Very pleasant to the touch and highly absorbent. A rich colour palette suits any interior.",
+      "viscoseWhite": "Classic white with high absorbency — a universal solution for every floor.",
+      "cottonViscose": "A blend of cotton and viscose gives mega absorbency on all floor types.",
+      "cottonViscose2": "A two-colour version of the cotton-viscose mop — mega absorbency on all floors.",
+      "cotton": "Soft, durable and highly absorbent — a great fit for any household.",
+      "cottonWrap": "Picks up dust perfectly, dries quickly, wrings out easily."
+    }
+  },
+  "aboutPage": {
+    "heading": "Polid company",
+    "title": "About us",
+    "p1": "In 1991, \"PoLiD\" was the first company in Poland to start producing string mops.",
+    "p2": "We are a reliable, proven manufacturer — our products sit on the shelves of many wholesalers and supermarkets in Poland and around the world.",
+    "p3": "Our products combine good quality, functionality and an attractive price, rounded off with a rich colour palette and modern packaging.",
+    "stats": [
+      { "value": "1991", "label": "Year founded" },
+      { "value": "30+", "label": "Years of experience" },
+      { "value": "7", "label": "Mop types" },
+      { "value": "100%", "label": "Made in Poland" }
+    ]
+  },
+  "ownBrandPage": {
+    "heading": "Private label",
+    "title": "We manufacture for your own brand",
+    "p1": "Have an idea for your own product but no way to start a production line? Talk it through with us and let us manufacture your item.",
+    "p2": "Then launch it under your own company's brand, or an entirely new brand we create together with you.",
+    "steps": [
+      { "title": "Consultation", "text": "We discuss your idea and choose the right materials and designs." },
+      { "title": "Production", "text": "We manufacture the product at our facility to the agreed specification." },
+      { "title": "Branding", "text": "We prepare packaging and labels under your brand." },
+      { "title": "Delivery", "text": "We deliver the finished product, ready to sell." }
+    ],
+    "cta": "Get in touch"
+  },
+  "contactPage": {
+    "heading": "Polid s.c.",
+    "title": "Contact",
+    "companyLabel": "Polid s.c.",
+    "contactLabel": "Contact details",
+    "addressLabel": "Address",
+    "taxLabel": "Tax ID"
+  },
+  "footer": {
+    "companyLabel": "Polid s.c.",
+    "contactLabel": "Contact",
+    "privacy": "Privacy policy",
+    "madeIn": "Made in Poland",
+    "rights": "All rights reserved."
+  },
+  "themeToggle": { "light": "Light mode", "dark": "Dark mode" },
+  "metadata": {
+    "title": "Polid – Mop Manufacturer",
+    "description": "Polid s.c. – a Polish manufacturer of string, viscose, cotton and microfiber mops since 1991."
+  }
+}

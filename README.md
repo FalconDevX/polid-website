@@ -1,16 +1,27 @@
-# React + Vite
+# Polid – Next.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Strona firmy Polid (producent mopów) zbudowana w Next.js (App Router) + TypeScript + Tailwind CSS, z wielojęzycznym routingiem przez [next-intl](https://next-intl.dev) (`pl`, `en`, `ru`, `uk`), motywem jasny/ciemny przez [next-themes](https://github.com/pacocoursey/next-themes) i statystykami odwiedzin przez [@vercel/analytics](https://vercel.com/docs/analytics).
 
-Currently, two official plugins are available:
+## Rozwój
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Aplikacja dostępna pod `http://localhost:3000` (przekierowuje do `/pl`, `/en`, `/ru` lub `/uk` w zależności od preferencji przeglądarki).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build produkcyjny
 
-## Expanding the Oxlint configuration
+```bash
+npm run build
+npm run start
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Struktura
+
+- `src/app/[locale]/` – trasy (App Router), jedna warstwa na każdy język
+- `src/components/` – komponenty UI (Tailwind + kilka zachowanych modułów CSS dla złożonych animacji, np. hero na stronie głównej)
+- `src/messages/` – tłumaczenia UI (next-intl)
+- `src/content/privacy.ts` – treść polityki prywatności (bogaty schemat bloków, poza next-intl)
+- `src/data/products.ts` – katalog produktów

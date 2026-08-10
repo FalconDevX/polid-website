@@ -1,0 +1,95 @@
+{
+  "nav": { "home": "Home", "products": "Produkty", "about": "O nas", "ownBrand": "Własna marka", "contact": "Kontakt" },
+  "hero": {
+    "title": "Czystość zaczyna się od jakości",
+    "subtitle": "Tworzymy z pasją od 1991 roku",
+    "cta": "Zobacz produkty"
+  },
+  "intro": {
+    "eyebrow": "Producent mopów",
+    "title": "POLID",
+    "p1": "Firma „PoLiD” w 1991 roku jako pierwsza w Polsce rozpoczęła produkcję mopów sznurkowych.",
+    "p2": "Jesteśmy rzetelnym i sprawdzonym producentem, a świadczy o tym fakt, iż nasze wyroby znajdują się na półkach wielu hurtowni oraz supermarketów w kraju i na świecie.",
+    "p3": "Nasze produkty są połączeniem dobrej jakości, funkcjonalności oraz atrakcyjnej ceny. Dopełnia je bogata kolorystyka oraz nowoczesny wygląd opakowań.",
+    "p4": "Produkujemy mopy z mikrofibry, wiskozowe, bawełniane, wiskozowo-bawełniane, bawełniane WRAP.",
+    "cta": "O nas",
+    "madeIn": "Wyprodukowano w Polsce"
+  },
+  "productsSection": {
+    "title": "Mopy naszej produkcji",
+    "cta": "Wszystkie produkty"
+  },
+  "ownBrandSection": {
+    "title": "Produkujemy dla Twojej własnej marki",
+    "text": "Masz pomysł na własny produkt, a nie masz możliwości uruchomienia własnej linii produkcyjnej? Skonsultuj swój pomysł z nami i zleć nam produkcję swojego artykułu, następnie wprowadź go na rynek pod marką własnego przedsiębiorstwa lub całkowicie nowym brandem.",
+    "cta": "Dowiedz się więcej"
+  },
+  "productsPage": {
+    "title": "Nasze produkty",
+    "subtitle": "Pełna oferta końcówek do mopów",
+    "categories": {
+      "microfiber": "Mopy z mikrofibry",
+      "viscoseMix": "Mopy wiskozowe mix kolor",
+      "viscoseWhite": "Mopy wiskozowe białe",
+      "cottonViscose": "Mopy bawełniano-wiskozowe",
+      "cottonViscose2": "Mopy bawełniano-wiskozowe 2 kolory",
+      "cotton": "Mopy bawełniane",
+      "cottonWrap": "Mopy bawełniane WRAP"
+    },
+    "descriptions": {
+      "microfiber": "Mopy z mikrofibry do dokładnego i wydajnego czyszczenia silnych zanieczyszczeń oraz do polerowania wszelkiego rodzaju gładkich podłóg. Absorbują ponad 500 ml wody lub płynów.",
+      "viscoseMix": "Bardzo przyjemne w dotyku i niezwykle chłonne. Bogata kolorystyka pasuje do wnętrz o każdym charakterze.",
+      "viscoseWhite": "Klasyczna biel i wysoka chłonność – uniwersalne rozwiązanie do każdej podłogi.",
+      "cottonViscose": "Połączenie bawełny i wiskozy zapewnia mega chłonność na wszystkie rodzaje podłóg.",
+      "cottonViscose2": "Dwukolorowa wersja mopu bawełniano-wiskozowego – mega chłonność na wszystkie podłogi.",
+      "cotton": "Miękki, trwały i bardzo chłonny – sprawdzi się w każdym gospodarstwie domowym.",
+      "cottonWrap": "Idealnie zbiera kurz, szybko schnie, łatwo się wyciska."
+    }
+  },
+  "aboutPage": {
+    "heading": "Firma Polid",
+    "title": "O nas",
+    "p1": "Firma „PoLiD” w 1991 roku jako pierwsza w Polsce rozpoczęła produkcję mopów sznurkowych.",
+    "p2": "Jesteśmy rzetelnym i sprawdzonym producentem, a świadczy o tym fakt, iż nasze wyroby znajdują się na półkach wielu hurtowni oraz supermarketów w kraju i na świecie.",
+    "p3": "Nasze produkty są połączeniem dobrej jakości, funkcjonalności oraz atrakcyjnej ceny. Dopełnia je bogata kolorystyka oraz nowoczesny wygląd opakowań.",
+    "stats": [
+      { "value": "1991", "label": "Rok założenia" },
+      { "value": "30+", "label": "Lat doświadczenia" },
+      { "value": "7", "label": "Rodzajów mopów" },
+      { "value": "100%", "label": "Produkcji w Polsce" }
+    ]
+  },
+  "ownBrandPage": {
+    "heading": "Własna marka",
+    "title": "Produkujemy dla Twojej własnej marki",
+    "p1": "Masz pomysł na własny produkt, a nie masz możliwości uruchomienia własnej linii produkcyjnej? Skonsultuj swój pomysł z nami i zleć nam produkcję swojego artykułu.",
+    "p2": "Następnie wprowadź go na rynek pod marką własnego przedsiębiorstwa lub całkowicie nowym brandem, jaki dla Ciebie stworzymy.",
+    "steps": [
+      { "title": "Konsultacja", "text": "Omawiamy Twój pomysł i dobieramy odpowiednie materiały oraz wzory." },
+      { "title": "Produkcja", "text": "Wytwarzamy produkt w naszym zakładzie zgodnie z ustalonymi wymaganiami." },
+      { "title": "Branding", "text": "Przygotowujemy opakowanie i etykiety pod Twoją marką." },
+      { "title": "Dostawa", "text": "Dostarczamy gotowy produkt, gotowy do sprzedaży." }
+    ],
+    "cta": "Skontaktuj się z nami"
+  },
+  "contactPage": {
+    "heading": "Polid s.c.",
+    "title": "Kontakt",
+    "companyLabel": "Polid s.c.",
+    "contactLabel": "Dane kontaktowe",
+    "addressLabel": "Adres",
+    "taxLabel": "NIP"
+  },
+  "footer": {
+    "companyLabel": "Polid s.c.",
+    "contactLabel": "Kontakt",
+    "privacy": "Polityka prywatności",
+    "madeIn": "Wyprodukowano w Polsce",
+    "rights": "Wszelkie prawa zastrzeżone."
+  },
+  "themeToggle": { "light": "Tryb jasny", "dark": "Tryb ciemny" },
+  "metadata": {
+    "title": "Polid – Producent mopów",
+    "description": "Polid s.c. – polski producent mopów sznurkowych, wiskozowych, bawełnianych i z mikrofibry od 1991 roku."
+  }
+}
