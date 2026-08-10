@@ -12,16 +12,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [resolvedTheme, setResolvedTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    const initialTheme: Theme = stored === 'dark' || stored === 'light' ? stored : media.matches ? 'dark' : 'light';
+    const initialTheme: Theme = stored === 'dark' || stored === 'light' ? stored : 'light';
     const frame = window.requestAnimationFrame(() => setResolvedTheme(initialTheme));
-
-    const followSystem = (event: MediaQueryListEvent) => {
-      if (!window.localStorage.getItem(STORAGE_KEY)) setResolvedTheme(event.matches ? 'dark' : 'light');
-    };
-    media.addEventListener('change', followSystem);
-    return () => { window.cancelAnimationFrame(frame); media.removeEventListener('change', followSystem); };
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
