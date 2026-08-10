@@ -3,7 +3,7 @@ import type { LanguageCode } from '@/i18n/languages';
 import PageHero from '@/components/PageHero/PageHero';
 import Reveal from '@/components/Reveal/Reveal';
 import { privacyPolicy } from '@/content/privacy';
-import heroImage from '../../../assets/images/panel-made-in-poland.jpg';
+import heroImage from '../../../assets/images/own-brand-page.png';
 import styles from './page.module.css';
 
 export default async function PrivacyPolicyPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -13,7 +13,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
 
   return (
     <div>
-      <PageHero eyebrow={content.heading} title={content.title} image={heroImage} />
+      <PageHero eyebrow={content.heading} title={content.title} image={heroImage} lightOverlay />
 
       <section className={styles.section}>
         <Reveal className={styles.intro}>

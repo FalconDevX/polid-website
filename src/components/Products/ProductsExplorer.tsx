@@ -1,7 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import PageHero from '@/components/PageHero/PageHero';
@@ -18,19 +19,35 @@ const copy: Record<SupportedLocale, Record<string, string>> = {
 };
 
 function FilterSelect({ label, value, onChange, items }: { label: string; value: string; onChange: (value: string) => void; items: Array<{ value: string; label: string }> }) {
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+  const selected = items.find((item) => item.value === value) ?? items[0];
+
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => {
+      if (detailsRef.current && !detailsRef.current.contains(event.target as Node)) detailsRef.current.removeAttribute('open');
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    return () => document.removeEventListener('pointerdown', closeOutside);
+  }, []);
+
   return (
-    <label className={styles.filterField}>
+    <div className={styles.filterField}>
       <span>{label}</span>
-      <select className={styles.customSelect} value={value} onChange={(event) => onChange(event.target.value)}>
-        {items.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
-      </select>
-    </label>
+      <details ref={detailsRef} className={styles.customSelect} onKeyDown={(event) => { if (event.key === 'Escape') { detailsRef.current?.removeAttribute('open'); detailsRef.current?.querySelector('summary')?.focus(); } }}>
+        <summary>{selected.label}<span className={styles.selectChevron} aria-hidden="true" /></summary>
+        <div className={styles.selectMenu}>
+          {items.map((item) => <button type="button" key={item.value} className={item.value === value ? styles.selectedOption : ''} onClick={() => { onChange(item.value); detailsRef.current?.removeAttribute('open'); }}>{item.label}</button>)}
+        </div>
+      </details>
+    </div>
   );
 }
 
-export default function ProductsExplorer({ initialCategory = 'all' }: { initialCategory?: string }) {
+export default function ProductsExplorer() {
   const t = useTranslations('productsPage');
   const locale = useLocale() as SupportedLocale;
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get('category') ?? 'all';
   const text = copy[locale] ?? copy.pl;
   const catalogProducts = useMemo(() => getCatalogProducts(locale), [locale]);
   const [query, setQuery] = useState('');

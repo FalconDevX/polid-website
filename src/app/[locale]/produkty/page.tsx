@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProductsExplorer from '@/components/Products/ProductsExplorer';
 
@@ -8,9 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return { title: t('title'), description: t('subtitle') };
 }
 
-export default async function ProductsPage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: Promise<{ category?: string }> }) {
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const { category } = await searchParams;
   setRequestLocale(locale);
-  return <ProductsExplorer key={category ?? 'all'} initialCategory={category} />;
+  return <Suspense fallback={null}><ProductsExplorer /></Suspense>;
 }

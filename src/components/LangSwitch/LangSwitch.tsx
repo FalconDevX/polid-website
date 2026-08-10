@@ -78,10 +78,8 @@ export default function LangSwitch() {
           <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
-      <ul
-        className={`absolute right-0 top-[calc(100%+8px)] z-50 w-[58px] min-w-[58px] rounded-lg border border-border bg-surface p-[0.35rem] shadow-soft transition-[opacity,transform] duration-200 ${
-          open ? 'pointer-events-auto translate-y-0 scale-100 opacity-100' : 'pointer-events-none -translate-y-2 scale-[0.98] opacity-0'
-        }`}
+      {open && <ul
+        className="absolute right-0 top-[calc(100%+8px)] z-50 w-[58px] min-w-[58px] rounded-lg border border-border bg-surface p-[0.35rem] shadow-soft"
         role="listbox"
         aria-label="Language"
         onKeyDown={handleListKeyDown}
@@ -102,7 +100,7 @@ export default function LangSwitch() {
             </button>
           </li>
         ))}
-      </ul>
+      </ul>}
     </div>
   );
 }

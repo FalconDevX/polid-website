@@ -57,12 +57,19 @@ export default function Header() {
   const isActive = (href: string, end: boolean) =>
     href.includes('#') ? false : end ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
 
+  const handleNavClick = (href: string, end: boolean) => {
+    setMenuOpen(false);
+    if (isActive(href, end)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[100] border-b border-border bg-bg text-ink ${scrolled ? 'shadow-[0_8px_30px_rgba(0,0,0,0.05)]' : ''}`}
     >
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-7 py-[0.9rem]">
-        <Link href="/" className="flex flex-shrink-0 items-center gap-[0.55rem]" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="flex flex-shrink-0 items-center gap-[0.55rem]" onClick={() => handleNavClick('/', true)}>
           <Image src={logo} alt="Polid" priority className="h-[46px] w-auto rounded-lg bg-white px-2 py-1" />
         </Link>
 
@@ -70,7 +77,11 @@ export default function Header() {
           <ul className="flex items-center gap-[2.1rem]">
             {links.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className={`${navLinkBase} ${isActive(l.href, l.end) ? navLinkActive : ''}`}>
+                <Link
+                  href={l.href}
+                  className={`${navLinkBase} ${isActive(l.href, l.end) ? navLinkActive : ''}`}
+                  onClick={() => handleNavClick(l.href, l.end)}
+                >
                   {l.label}
                 </Link>
               </li>
@@ -120,7 +131,7 @@ export default function Header() {
               <Link
                 href={l.href}
                 className={`${navLinkBase} block py-[0.6rem] text-[0.85rem] ${isActive(l.href, l.end) ? navLinkActive : ''}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => handleNavClick(l.href, l.end)}
               >
                 {l.label}
               </Link>

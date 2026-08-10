@@ -90,12 +90,25 @@
   color: var(--color-ink);
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 0.86rem;
   white-space: nowrap;
   text-overflow: ellipsis;
   cursor: pointer;
   list-style: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.customSelect summary:hover {
+  border-color: color-mix(in srgb, var(--color-gold) 55%, var(--color-border));
+  background: var(--color-bg-alt);
+}
+
+.customSelect summary:focus-visible,
+.customSelect[open] summary {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gold) 16%, transparent);
 }
 
 .customSelect summary::-webkit-details-marker {
@@ -128,12 +141,14 @@
   width: max-content;
   min-width: 100%;
   max-width: 320px;
-  padding: 0.4rem;
+  padding: 0.45rem;
   overflow: hidden;
   background: var(--color-surface);
-  border: 0;
-  border-radius: 12px;
-  box-shadow: 0 16px 40px rgba(16, 25, 23, 0.16);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(16, 25, 23, 0.2);
+  transform-origin: top center;
+  animation: selectMenuIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .selectMenu button {
@@ -143,16 +158,19 @@
   color: var(--color-ink);
   background: transparent;
   border: 0;
-  border-radius: 8px;
+  border-radius: 9px;
   font: inherit;
   font-size: 0.86rem;
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
 }
 
 .selectMenu button:hover {
-  background: var(--color-bg-alt);
+  color: var(--color-gold-dark);
+  background: color-mix(in srgb, var(--color-gold) 11%, var(--color-bg-alt));
+  transform: translateX(3px);
 }
 
 .selectMenu .selectedOption {
@@ -162,6 +180,11 @@
 
 .selectMenu .selectedOption:hover {
   background: var(--color-gold);
+}
+
+@keyframes selectMenuIn {
+  from { opacity: 0; transform: translateY(-7px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .filters input,

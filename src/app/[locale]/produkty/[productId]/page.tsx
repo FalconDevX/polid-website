@@ -14,11 +14,50 @@ import styles from '@/components/ProductDetail/ProductDetail.module.css';
 
 const weights: Record<string, string> = { m3: '150 g', m4: '190 g', p3: '150 g', p4: '190 g', pk4: '190 g', pb3: '150 g', pb4: '190 g', b2: '125 g', b3: '165 g', b4: '190 g', xl: '230 g', xxl: '270 g', z3: '165 g', z4: '190 g', e3: '165 g', e4: '190 g', w3: '165 g', w4: '190 g' };
 
-const detailCopy: Record<SupportedLocale, Record<string, string | string[]>> = {
-  pl: { products: 'Produkty', kicker: 'Produkt POLID', number: 'Numer katalogowy', size: 'Rozmiar', weight: 'Waga', color: 'Kolor', inquiry: 'Zapytaj o produkt', info: 'Najważniejsze informacje', features: 'Cechy produktu', composition: 'Skład i wykonanie', material: 'O materiale', closeup: 'Produkt z bliska', gallery: 'Galeria', galleryImage: 'zdjęcie galerii', carouselImage: 'zdjęcie', previous: 'Poprzednie zdjęcie', next: 'Następne zdjęcie', close: 'Zamknij podgląd', benefits: ['Wysoka chłonność', 'Skuteczne czyszczenie', 'Nie rysuje powierzchni', 'Pasuje do standardowych trzonków'] },
-  en: { products: 'Products', kicker: 'POLID product', number: 'Catalogue number', size: 'Size', weight: 'Weight', color: 'Colour', inquiry: 'Ask about this product', info: 'Key information', features: 'Product features', composition: 'Composition and manufacture', material: 'About the material', closeup: 'A closer look', gallery: 'Gallery', galleryImage: 'gallery image', carouselImage: 'image', previous: 'Previous image', next: 'Next image', close: 'Close preview', benefits: ['High absorbency', 'Effective cleaning', 'Does not scratch surfaces', 'Fits standard handles'] },
-  ru: { products: 'Товары', kicker: 'Продукт POLID', number: 'Каталожный номер', size: 'Размер', weight: 'Вес', color: 'Цвет', inquiry: 'Спросить о товаре', info: 'Основная информация', features: 'Характеристики товара', composition: 'Состав и производство', material: 'О материале', closeup: 'Товар вблизи', gallery: 'Галерея', galleryImage: 'изображение галереи', carouselImage: 'изображение', previous: 'Предыдущее изображение', next: 'Следующее изображение', close: 'Закрыть просмотр', benefits: ['Высокая впитываемость', 'Эффективная уборка', 'Не царапает поверхности', 'Подходит к стандартным ручкам'] },
-  uk: { products: 'Товари', kicker: 'Продукт POLID', number: 'Каталожний номер', size: 'Розмір', weight: 'Вага', color: 'Колір', inquiry: 'Запитати про товар', info: 'Основна інформація', features: 'Характеристики товару', composition: 'Склад і виробництво', material: 'Про матеріал', closeup: 'Товар зблизька', gallery: 'Галерея', galleryImage: 'зображення галереї', carouselImage: 'зображення', previous: 'Попереднє зображення', next: 'Наступне зображення', close: 'Закрити перегляд', benefits: ['Висока поглинальна здатність', 'Ефективне очищення', 'Не дряпає поверхні', 'Підходить до стандартних ручок'] },
+const detailCopy: Record<SupportedLocale, Record<string, string>> = {
+  pl: { products: 'Produkty', kicker: 'Produkt POLID', number: 'Numer katalogowy', size: 'Rozmiar', weight: 'Waga', color: 'Kolor', inquiry: 'Zapytaj o produkt', info: 'Najważniejsze informacje', features: 'Cechy produktu', composition: 'Skład i wykonanie', material: 'O materiale', closeup: 'Produkt z bliska', gallery: 'Galeria', galleryImage: 'zdjęcie galerii', carouselImage: 'zdjęcie', previous: 'Poprzednie zdjęcie', next: 'Następne zdjęcie', close: 'Zamknij podgląd' },
+  en: { products: 'Products', kicker: 'POLID product', number: 'Catalogue number', size: 'Size', weight: 'Weight', color: 'Colour', inquiry: 'Ask about this product', info: 'Key information', features: 'Product features', composition: 'Composition and manufacture', material: 'About the material', closeup: 'A closer look', gallery: 'Gallery', galleryImage: 'gallery image', carouselImage: 'image', previous: 'Previous image', next: 'Next image', close: 'Close preview' },
+  ru: { products: 'Товары', kicker: 'Продукт POLID', number: 'Каталожный номер', size: 'Размер', weight: 'Вес', color: 'Цвет', inquiry: 'Спросить о товаре', info: 'Основная информация', features: 'Характеристики товара', composition: 'Состав и производство', material: 'О материале', closeup: 'Товар вблизи', gallery: 'Галерея', galleryImage: 'изображение галереи', carouselImage: 'изображение', previous: 'Предыдущее изображение', next: 'Следующее изображение', close: 'Закрыть просмотр' },
+  uk: { products: 'Товари', kicker: 'Продукт POLID', number: 'Каталожний номер', size: 'Розмір', weight: 'Вага', color: 'Колір', inquiry: 'Запитати про товар', info: 'Основна інформація', features: 'Характеристики товару', composition: 'Склад і виробництво', material: 'Про матеріал', closeup: 'Товар зблизька', gallery: 'Галерея', galleryImage: 'зображення галереї', carouselImage: 'зображення', previous: 'Попереднє зображення', next: 'Наступне зображення', close: 'Закрити перегляд' },
+};
+
+const benefitsByCategory: Record<SupportedLocale, Record<ProductCategoryKey, string[]>> = {
+  pl: {
+    microfiber: ['Chłonie ponad 500 ml płynu', 'Czyści także na sucho', 'Nie rysuje powierzchni', 'Pasuje do standardowych trzonków'],
+    viscoseMix: ['Bardzo wysoka chłonność', 'Nie pozostawia smug', 'Do delikatnych podłóg', 'Łatwe wyciskanie'],
+    viscoseWhite: ['Bardzo wysoka chłonność', 'Nie pozostawia smug', 'Do delikatnych podłóg', 'Uniwersalna biała kolorystyka'],
+    cottonViscose: ['Do każdego rodzaju podłogi', 'Dobrze zbiera wodę i błoto', 'Mocne włókna sznurka', 'Klasyczny, uniwersalny gwint'],
+    cottonViscose2: ['Do każdego rodzaju podłogi', 'Wysoka chłonność', 'Trwałe dwukolorowe włókna', 'Klasyczny, uniwersalny gwint'],
+    cotton: ['Miękki i trwały', 'Doskonała chłonność', 'Nie rysuje podłoża', 'Można stosować z chemią domową'],
+    cottonWrap: ['Szybko schnie', 'Łatwo się wyciska', 'Nie pozostawia smug', 'Skutecznie zbiera kurz'],
+  },
+  en: {
+    microfiber: ['Absorbs over 500 ml of liquid', 'Also cleans when dry', 'Does not scratch surfaces', 'Fits standard handles'],
+    viscoseMix: ['Very high absorbency', 'Leaves no streaks', 'Suitable for delicate floors', 'Easy to wring out'],
+    viscoseWhite: ['Very high absorbency', 'Leaves no streaks', 'Suitable for delicate floors', 'Universal white colour'],
+    cottonViscose: ['Suitable for every floor type', 'Collects water and mud effectively', 'Strong yarn fibres', 'Standard universal thread'],
+    cottonViscose2: ['Suitable for every floor type', 'High absorbency', 'Durable two-colour fibres', 'Standard universal thread'],
+    cotton: ['Soft and durable', 'Excellent absorbency', 'Does not scratch floors', 'Compatible with household cleaners'],
+    cottonWrap: ['Dries quickly', 'Easy to wring out', 'Leaves no streaks', 'Collects dust effectively'],
+  },
+  ru: {
+    microfiber: ['Впитывает более 500 мл жидкости', 'Подходит и для сухой уборки', 'Не царапает поверхности', 'Подходит к стандартным ручкам'],
+    viscoseMix: ['Очень высокая впитываемость', 'Не оставляет разводов', 'Для деликатных полов', 'Легко отжимается'],
+    viscoseWhite: ['Очень высокая впитываемость', 'Не оставляет разводов', 'Для деликатных полов', 'Универсальный белый цвет'],
+    cottonViscose: ['Для всех типов полов', 'Хорошо собирает воду и грязь', 'Прочные волокна', 'Стандартная универсальная резьба'],
+    cottonViscose2: ['Для всех типов полов', 'Высокая впитываемость', 'Прочные двухцветные волокна', 'Стандартная универсальная резьба'],
+    cotton: ['Мягкий и прочный', 'Отличная впитываемость', 'Не царапает пол', 'Можно использовать с бытовой химией'],
+    cottonWrap: ['Быстро сохнет', 'Легко отжимается', 'Не оставляет разводов', 'Эффективно собирает пыль'],
+  },
+  uk: {
+    microfiber: ['Вбирає понад 500 мл рідини', 'Підходить і для сухого прибирання', 'Не дряпає поверхні', 'Підходить до стандартних ручок'],
+    viscoseMix: ['Дуже висока поглинальна здатність', 'Не залишає розводів', 'Для делікатних підлог', 'Легко віджимається'],
+    viscoseWhite: ['Дуже висока поглинальна здатність', 'Не залишає розводів', 'Для делікатних підлог', 'Універсальний білий колір'],
+    cottonViscose: ['Для всіх типів підлоги', 'Добре збирає воду та бруд', 'Міцні волокна', 'Стандартна універсальна різьба'],
+    cottonViscose2: ['Для всіх типів підлоги', 'Висока поглинальна здатність', 'Міцні двоколірні волокна', 'Стандартна універсальна різьба'],
+    cotton: ['М’який і міцний', 'Відмінна поглинальна здатність', 'Не дряпає підлогу', 'Можна використовувати з побутовою хімією'],
+    cottonWrap: ['Швидко сохне', 'Легко віджимається', 'Не залишає розводів', 'Ефективно збирає пил'],
+  },
 };
 
 const materialDetails: Record<SupportedLocale, Record<ProductCategoryKey, string>> = {
@@ -81,7 +120,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const titleClass = product.name.length > 40 ? styles.titleSmall : product.name.length > 30 ? styles.titleMedium : '';
   const productImages = product.id === 'm3' ? [m3PurpleGreen, m3RedGreenDark] : [product.image];
   const galleryImages = product.id === 'm3' ? [...productImages, m3MaterialDetail, m3MaterialDetailRedTeal] : [product.image, product.image, product.image];
-  const benefits = text.benefits as string[];
+  const benefits = benefitsByCategory[language][product.category];
 
   return (
     <div className={styles.page}>

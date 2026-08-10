@@ -64,11 +64,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
-  overflow-x: hidden;
   font-family: var(--font-body);
   background-color: rgb(var(--color-bg-rgb));
   color: rgb(var(--color-ink-rgb));
