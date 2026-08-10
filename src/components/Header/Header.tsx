@@ -1,12 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import LangSwitch from '../LangSwitch/LangSwitch';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
-import logo from '../../assets/images/logo.png';
+import ThemeLogo from '../ThemeLogo/ThemeLogo';
 
 const navLinkBase =
   'relative py-[0.4rem] px-[0.05rem] text-[0.78rem] font-medium uppercase tracking-[1.6px] text-inherit opacity-80 transition-[color,opacity] duration-300 hover:opacity-100 after:absolute after:bottom-[-2px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-[350ms] after:ease-[cubic-bezier(0.16,1,0.3,1)] hover:after:origin-left hover:after:scale-x-100';
@@ -70,11 +69,11 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-7 py-[0.9rem]">
         <Link href="/" className="flex flex-shrink-0 items-center gap-[0.55rem]" onClick={() => handleNavClick('/', true)}>
-          <Image src={logo} alt="Polid" priority className="h-[46px] w-auto rounded-lg bg-white px-2 py-1" />
+          <ThemeLogo priority className="h-[46px] w-auto object-contain" />
         </Link>
 
         <nav className="flex flex-1 justify-center max-[860px]:hidden">
-          <ul className="flex items-center gap-[2.1rem]">
+          <ul className="flex list-none items-center gap-[2.1rem]">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
@@ -121,7 +120,7 @@ export default function Header() {
           menuOpen ? 'max-[860px]:max-h-[400px] max-[860px]:border-b max-[860px]:border-border' : 'max-[860px]:max-h-0 max-[860px]:border-b max-[860px]:border-transparent'
         }`}
       >
-        <ul className="flex flex-col gap-[0.4rem] px-7 pb-6 pt-2">
+        <ul className="flex list-none flex-col gap-[0.4rem] px-7 pb-6 pt-2">
           {links.map((l, i) => (
             <li
               key={l.href}

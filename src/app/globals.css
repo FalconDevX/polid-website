@@ -67,6 +67,12 @@ html {
   overflow-x: clip;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -92,12 +98,6 @@ a {
   text-decoration: none;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 button {
   font-family: inherit;
 }
@@ -108,6 +108,6 @@ img {
 }
 
 ::selection {
-  background: rgb(var(--color-gold-rgb));
+  background: rgb(var(--color-gold-dark-rgb));
   color: #ffffff;
 }

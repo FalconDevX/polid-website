@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Reveal from '../Reveal/Reveal';
-import logo from '../../assets/images/logo.png';
+import ThemeLogo from '../ThemeLogo/ThemeLogo';
 
 export default function Footer() {
   const t = useTranslations();
@@ -19,7 +18,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-7 pb-12 pt-4 md:grid-cols-[1.3fr_1fr_1fr]">
         <Reveal>
           <div className="mb-4 flex items-center">
-            <Image src={logo} alt="Polid" className="h-[58px] w-auto bg-white px-[10px] py-[5px]" />
+            <ThemeLogo className="h-[58px] w-auto object-contain" />
           </div>
           <p className="max-w-[34ch] text-[0.9rem] text-ink-soft">{t('intro.p1')}</p>
         </Reveal>

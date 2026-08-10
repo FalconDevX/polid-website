@@ -79,7 +79,7 @@ export default function LangSwitch() {
         </svg>
       </button>
       {open && <ul
-        className="absolute right-0 top-[calc(100%+8px)] z-50 w-[58px] min-w-[58px] rounded-lg border border-border bg-surface p-[0.35rem] shadow-soft"
+        className="absolute right-0 top-[calc(100%+8px)] z-50 w-[58px] min-w-[58px] list-none rounded-lg border border-border bg-surface p-[0.35rem] shadow-soft"
         role="listbox"
         aria-label="Language"
         onKeyDown={handleListKeyDown}
