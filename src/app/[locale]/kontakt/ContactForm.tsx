@@ -19,7 +19,7 @@ export default function ContactForm({ copy }: { copy: ContactFormCopy }) {
     <form className={styles.form} onSubmit={sendMessage}>
       <div className={styles.formRow}><label><span>{copy.name} *</span><input name="name" type="text" autoComplete="name" required placeholder={copy.namePlaceholder} /></label><label><span>{copy.email} *</span><input name="email" type="email" autoComplete="email" required placeholder="name@company.com" /></label></div>
       <div className={styles.formRow}><label><span>{copy.phone}</span><input name="phone" type="tel" autoComplete="tel" placeholder="+48 000 000 000" /></label><label><span>{copy.subject} *</span><input name="subject" type="text" required placeholder={copy.subjectPlaceholder} /></label></div>
-      <label><span>{copy.message} *</span><textarea name="message" rows={6} required placeholder={copy.messagePlaceholder} /></label>
+      <label><span>{copy.message} *</span><textarea className="max-h-[420px] overflow-y-auto [field-sizing:content]" name="message" rows={6} required placeholder={copy.messagePlaceholder} /></label>
       <label className={styles.consent}><input type="checkbox" required /><span>{copy.consent}</span></label>
       <button className={styles.submit} type="submit">{copy.submit}</button>
     </form>
