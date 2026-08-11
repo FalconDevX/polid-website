@@ -36,6 +36,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t('title'),
     description: t('description'),
     icons: { icon: '/favicon.png?v=5', shortcut: '/favicon.png?v=5', apple: '/favicon.png?v=5' },
+    verification: {
+      other: {
+        'strix-verification': 'strix-verify-cc7a5cac9d30c5b0d3025ca46967c913',
+      },
+    },
   };
 }
 
