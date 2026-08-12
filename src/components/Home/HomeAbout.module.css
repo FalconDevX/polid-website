@@ -1,6 +1,6 @@
 .section {
   --about-overlay: linear-gradient(135deg, rgba(239, 247, 239, 0.16), rgba(225, 239, 228, 0.08));
-  --about-heading: #a8efb2;
+  --about-heading: #ffffff;
   --about-eyebrow: #e7ffec;
   --about-card: rgba(255, 255, 255, 0.92);
   --about-card-border: rgba(37, 122, 62, 0.2);
