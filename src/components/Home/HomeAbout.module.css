@@ -1,14 +1,16 @@
 .section {
-  --about-overlay: linear-gradient(135deg, rgba(239, 247, 239, 0.72), rgba(225, 239, 228, 0.55));
-  --about-heading: #183323;
-  --about-eyebrow: #257a3e;
-  --about-card: rgba(255, 255, 255, 0.84);
+  --about-overlay: linear-gradient(135deg, rgba(239, 247, 239, 0.16), rgba(225, 239, 228, 0.08));
+  --about-heading: #a8efb2;
+  --about-eyebrow: #e7ffec;
+  --about-card: rgba(255, 255, 255, 0.92);
   --about-card-border: rgba(37, 122, 62, 0.2);
-  --about-body: #33483a;
-  --about-stat: rgba(255, 255, 255, 0.8);
-  --about-stat-label: #52675a;
-  --about-shadow: rgba(27, 67, 40, 0.18);
+  --about-body: #26372c;
+  --about-stat: rgba(255, 255, 255, 0.91);
+  --about-stat-label: #34483b;
+  --about-shadow: rgba(18, 12, 34, 0.3);
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   scroll-margin-top: 90px;
   padding: 8rem 1.75rem 6rem;
   background-position: center;
@@ -18,7 +20,7 @@
 }
 
 :global(:root[data-theme='dark']) .section {
-  --about-overlay: linear-gradient(135deg, rgba(7, 23, 17, 0.58), rgba(9, 30, 22, 0.4));
+  --about-overlay: linear-gradient(135deg, rgba(7, 23, 17, 0.22), rgba(9, 30, 22, 0.12));
   --about-heading: #fff;
   --about-eyebrow: #c9efce;
   --about-card: rgba(5, 16, 12, 0.76);
@@ -34,7 +36,22 @@
   position: absolute;
   inset: 0;
   background: var(--about-overlay);
+  z-index: -1;
   transition: background 0.4s ease;
+}
+
+.section > .backgroundVideo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.4) contrast(1.1);
+  pointer-events: none;
 }
 
 .section > * {
@@ -57,12 +74,14 @@
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(17, 8, 33, 0.72);
 }
 
 .heading h2 {
   margin-top: 0.45rem;
   color: var(--about-heading);
   font-size: clamp(2.8rem, 6vw, 4.8rem);
+  text-shadow: 0 3px 18px rgba(17, 8, 33, 0.72);
 }
 
 .grid {
@@ -114,8 +133,12 @@
   display: block;
   font-family: var(--font-heading);
   font-size: 2.4rem;
-  color: var(--color-gold-dark);
+  color: #23673a;
   margin-bottom: 0.3rem;
+}
+
+:global(:root[data-theme='dark']) .statValue {
+  color: #b9e9c2;
 }
 
 .statLabel {

@@ -1,6 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Reveal from '@/components/Reveal/Reveal';
-import sectionBg from '../../../assets/images/hero-bg.png';
 import styles from './page.module.css';
 
 interface AboutStat { value: string; label: string }
@@ -9,7 +8,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params; setRequestLocale(locale);
   const t = await getTranslations('aboutPage');
   const stats = t.raw('stats') as AboutStat[];
-  return <section className={styles.section} style={{ backgroundImage: `url(${sectionBg.src})` }}>
+  return <section className={styles.section}>
+    <video className={styles.backgroundVideo} autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+      <source src="/videos/microfiber-loop.mp4" type="video/mp4" />
+    </video>
     <span
       aria-hidden="true"
       className="pointer-events-none rounded-sm border border-black/10 shadow-[0_8px_22px_rgba(14,30,20,0.2)]"

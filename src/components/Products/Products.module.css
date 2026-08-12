@@ -280,27 +280,31 @@
 
 .imageWrap .colorStrip {
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  width: 96px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  border-radius: 999px;
-  background: repeating-linear-gradient(
-    125deg,
-    #ef2f65 0 12px,
-    #7827c8 12px 24px,
-    #16a8bd 24px 36px,
-    #31a84a 36px 48px,
-    #b8d629 48px 60px,
-    #f29b24 60px 72px
+  right: -48px;
+  bottom: 24px;
+  width: 158px;
+  height: 32px;
+  border-top: 2px solid rgba(255, 255, 255, 0.86);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.86);
+  background: linear-gradient(
+    90deg,
+    #ff365d 0%,
+    #ff962f 17%,
+    #f4df3e 33%,
+    #45c95d 49%,
+    #22b8cf 65%,
+    #5268e8 82%,
+    #a43bce 100%
   );
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
-  transition: transform 0.35s ease;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.34);
+  transform: rotate(-45deg);
+  transform-origin: center;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 .card:hover .colorStrip {
-  transform: translateX(-3px) scaleX(1.04);
+  transform: rotate(-45deg) scaleY(1.08);
+  filter: saturate(1.16) brightness(1.06);
 }
 
 .cardBody {

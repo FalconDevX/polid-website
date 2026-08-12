@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Reveal from '@/components/Reveal/Reveal';
 import Button from '@/components/Button/Button';
@@ -7,8 +6,7 @@ import HomeHero from '@/components/Home/HomeHero';
 import StatCounter from '@/components/Home/StatCounter';
 import ScrollToHash from '@/components/Home/ScrollToHash';
 import { products, homeProducts } from '@/data/products';
-import ownBrandImage from '../../assets/images/own-brand-mop-blueprint.png';
-import aboutBg from '../../assets/images/hero-bg.png';
+import ownBrandBg from '../../assets/images/hero-bg.png';
 import styles from '@/components/Home/Home.module.css';
 import aboutStyles from '@/components/Home/HomeAbout.module.css';
 
@@ -29,7 +27,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <ScrollToHash />
       <HomeHero />
 
-      <section id="about" className={aboutStyles.section} style={{ backgroundImage: `url(${aboutBg.src})` }}>
+      <section id="about" className={aboutStyles.section}>
+        <video className={aboutStyles.backgroundVideo} autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+          <source src="/videos/microfiber-loop.mp4" type="video/mp4" />
+        </video>
         <Reveal className={aboutStyles.heading}>
           <span>{t('aboutPage.heading')}</span>
           <h2>{t('aboutPage.title')}</h2>
@@ -69,11 +70,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </Reveal>
       </section>
 
-      <section className={styles.ownBrand}>
+      <section className={styles.ownBrand} style={{ backgroundImage: `url(${ownBrandBg.src})` }}>
         <div className={styles.ownBrandGrid}>
-          <Reveal className={styles.ownBrandVisual}>
-            <Image src={ownBrandImage} alt={t('ownBrandSection.title')} className={styles.ownBrandImg} />
-          </Reveal>
           <Reveal delay={120} className={styles.ownBrandText}>
             <h2 className={styles.introTitle}>{t('ownBrandSection.title')}</h2>
             <p className={styles.body}>{t('ownBrandSection.text')}</p>
